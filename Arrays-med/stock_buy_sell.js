@@ -9,8 +9,8 @@ const maximumProfit = (prices) => {
   let minPrice = Number.MAX_VALUE;
 
   for (let i = 0; i < prices.length; i++) {
-    minPrice = Math.min(minPrice, arr[i]);
-    maxProfit = Math.max(maxProfit, arr[i] - minPrice);
+    minPrice = Math.min(minPrice, prices[i]);
+    maxProfit = Math.max(maxProfit, prices[i] - minPrice);
   }
 
   return maxProfit;
