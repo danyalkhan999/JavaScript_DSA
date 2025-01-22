@@ -1,4 +1,4 @@
-// * Given an integer array nums, find the subarray with the largest sum, and return its sum.
+// * Given an integer array nums, find the subarray with the largest       sum, and return its sum.
 
 // ! Example 1:
 
@@ -34,6 +34,22 @@ const maxSumSubarray = (arr) => {
   return { res: MAX, indices: [ansStart, ansEnd] };
 };
 
+const kadaneAlgo = (arr) => {
+  let sum = 0;
+  let max = -99999;
+
+  arr.forEach((el) => {
+    sum += el;
+
+    if (sum > max) max = sum;
+
+    if (sum < 0) sum = 0;
+  });
+
+  return max;
+};
+
 const arr = [4, -1, 2, 1, -5, 4, -2, 1, -3];
 
 console.log(maxSumSubarray(arr));
+console.log(kadaneAlgo(arr));
