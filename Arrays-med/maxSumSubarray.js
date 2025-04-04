@@ -19,19 +19,22 @@ const maxSumSubarray = (arr) => {
   let sum = 0;
   let MAX = -9999999;
   let start = -1;
-  let ansStart = (ansEnd = -1);
+  let ansEnd = -1;
 
   for (let i = 0; i < arr.length; i++) {
-    if (sum == 0) start = i;
+    if (sum <= 0) {
+      start = i;
+      sum = 0;
+    }
     sum += arr[i];
     if (sum > MAX) {
       MAX = sum;
-      ansStart = start;
+      // ansStart = start;
       ansEnd = i;
     }
-    if (sum < 0) sum = 0;
+    // if (sum < 0) sum = 0;
   }
-  return { res: MAX, indices: [ansStart, ansEnd] };
+  return { res: MAX, indices: [start, ansEnd] };
 };
 
 const kadaneAlgo = (arr) => {
@@ -49,7 +52,7 @@ const kadaneAlgo = (arr) => {
   return max;
 };
 
-const arr = [4, -1, 2, 1, -5, 4, -2, 1, -3];
+const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 console.log(maxSumSubarray(arr));
 console.log(kadaneAlgo(arr));
